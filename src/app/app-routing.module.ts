@@ -3,14 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { AssetAddComponent } from './asset-add/asset-add.component';
 import { AssetListComponent } from './asset-list/asset-list.component';
 import { AssetEditComponent } from './asset-edit/asset-edit.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 const routes: Routes = [
   //{path:'',pathMatch:'full',redirectTo:'create'},
   
-  {path:'',pathMatch:'full',redirectTo:'create'},
-
+  {path:'',pathMatch:'full',redirectTo:'login'},
+  {path:'login',component:LoginComponent},
   {path:'create',component:AssetAddComponent},
   
   {path:'assets',component:AssetListComponent},

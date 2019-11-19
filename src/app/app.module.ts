@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AssetAddComponent,
     AssetEditComponent,
     AssetListComponent,
+    LoginComponent,
   
    
   ],
@@ -29,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule
     
   ],

@@ -12,7 +12,7 @@ export class AuthService {
   private baseUrl="http://localhost:63558/api"
 
   constructor(private http:HttpClient) { }
-  login(userInfo:Login):Observable<any>
+   public login(userInfo:Login):Observable<any>
   {
     localStorage.setItem('ACCESS_TOKEN',"access_token");
     localStorage.setItem('user',userInfo.uname);
