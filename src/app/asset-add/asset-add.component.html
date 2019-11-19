@@ -1,0 +1,43 @@
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="assets" class="nav-link" routerLinkActive="active">Asset List</a>
+        </li>
+        <li class="nav-item">
+            <a href="create" class="nav-link" routerLinkActive="active">Add Products</a>
+
+        </li>
+        <li class="nav-item">
+            <a href="login" class="nav-link" routerLinkActive="active">LogOut</a>
+        </li>
+
+    </ul>
+    
+</nav>
+<form [formGroup]="assetform" (ngSubmit)="addAssets()">
+    <div class="form-group">
+        <label for="ad_name">Asset Name </label>
+        <input type="text " class="form-control" placeholder="Enter name" formControlName="ad_name">
+
+    </div>
+    
+      
+    
+        
+    <div class="form-group ">
+        <label for="ad_type_id">Asset type</label>
+        <input type="text" class="form-control" formControlName="ad_type_id">
+
+    </div>
+    <div class="form-group ">
+        <label for="ad_class">Asset class</label>
+        <input type="text" class="form-control" formControlName="ad_class">
+
+    </div>
+    
+      
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
