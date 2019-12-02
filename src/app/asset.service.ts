@@ -15,6 +15,10 @@ export class AssetDefService {
   getAssetList(): Observable<any> {
     return this.http.get(this.baseUrl + '/AssetDefs');
   }
+  getAssettypes(): Observable<any> {
+    return this.http.get(this.baseUrl + '/Assettypes');
+  }
+  
   deleteAsset(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/AssetDefs/'+id);
   }
@@ -32,7 +36,7 @@ export class AssetDefService {
   }
   searchAsset(name:string):Observable<any>
   {
-    return this.http.get(this.baseUrl+'/assets?name=/'+name);
+    return this.http.get(this.baseUrl+'/AssetDefs?name='+name);
   }
 }
 

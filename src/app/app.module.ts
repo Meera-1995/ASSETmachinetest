@@ -12,7 +12,20 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-
+import { VendorAddComponent } from './vendor-add/vendor-add.component';
+import { VendorEditComponent } from './vendor-edit/vendor-edit.component';
+import { VendorListComponent } from './vendor-list/vendor-list.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
+import { PurchaseAddComponent } from './purchase-add/purchase-add.component';
+import { PurchaseListComponent } from './purchase-list/purchase-list.component';
+import { PurchaseEditComponent } from './purchase-edit/purchase-edit.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { AssetmasterComponent } from './assetmaster/assetmaster.component';
+import { AssetmasterListComponent } from './assetmaster-list/assetmaster-list.component';
+import { AssetmasterOrderComponent } from './assetmaster-order/assetmaster-order.component';
+ 
 
 
 @NgModule({
@@ -22,6 +35,17 @@ import { LoginComponent } from './login/login.component';
     AssetEditComponent,
     AssetListComponent,
     LoginComponent,
+    VendorAddComponent,
+    VendorEditComponent,
+    VendorListComponent,
+    AdminComponent,
+    UserComponent,
+    PurchaseAddComponent,
+    PurchaseListComponent,
+    PurchaseEditComponent,
+    AssetmasterComponent,
+    AssetmasterListComponent,
+    AssetmasterOrderComponent,
   
    
   ],
@@ -31,8 +55,12 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    }),
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
     
   ],
   providers: [],

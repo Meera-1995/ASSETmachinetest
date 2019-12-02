@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AssetDefService } from '../asset.service';
 import { AssetDef } from '../asset';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +18,9 @@ export class AssetListComponent implements OnInit {
   assets: Observable<AssetDef[]>;
  
 
-  constructor(private assetdefService:AssetDefService,private router: Router) { }
+  constructor(private assetdefService:AssetDefService,private router: Router,private toastr:ToastrService) { 
+   
+   }
 
   ngOnInit() {
     this.reloadData();
@@ -29,15 +32,16 @@ deleteAsset(id:number){
   if(confirm('Do you want to delete this record?'))
   {
     this.assetdefService.deleteAsset(id).subscribe(data=>{
-      //this.toastr.success('Deleted Successfully..!!', 'Success');
+      this.toastr.warning('Deleted Successfully..!!');
       console.log(data);
-    })
+    });
+    this.reloadData();
   }
 }
-searchAsset(assetname:string)
+search(ad_name:string)
 {
-  this.asset=this.assetdefService.searchAsset(assetname);
-  if(assetname="")
+  this.asset=this.assetdefService.searchAsset(ad_name);
+  if(ad_name="")
   {
     this.asset=this.assetdefService.getAssetList();
   }

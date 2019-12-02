@@ -4,6 +4,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../login.service';
 import { Router } from '@angular/router';
 import { AssetDefService } from '../asset.service';
+import { Observable } from 'rxjs';
+import { Assettype } from '../assettype';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-asset-add',
@@ -13,16 +16,19 @@ import { AssetDefService } from '../asset.service';
 export class AssetAddComponent implements OnInit {
   assetform:FormGroup
   asset:AssetDef=new AssetDef();
+  assettypes:Observable<Assettype[]>;
  
-  constructor(private formBuilder:FormBuilder,private service:AssetDefService,private route:Router) { }
+  constructor(private formBuilder:FormBuilder,private service:AssetDefService,private route:Router,private toastr:ToastrService) { }
 
   ngOnInit() {
+    
     this.assetform=this.formBuilder.group({
       ad_name:['',Validators.compose([Validators.required])],
       ad_type_id:['',Validators.compose([Validators.required])],
       ad_class:['',Validators.compose([Validators.required])],
      
     });
+    this.assettypes=this.service.getAssettypes();
 
 }
 get formcontrol()
@@ -32,16 +38,32 @@ get formcontrol()
   addAssets()
   {
 
-  /**  this.product.productname=this.productform.controls.productname.value;
-   this.product.productdescription=this.productform.controls.productdescription.value;
-   this.product.manfdate=this.productform.controls.manfdate.value;
-   this.product.productprice=this.productform.controls.productprice.value;*/
-    this.asset=this.assetform.value;
-    console.log(this.asset)
-    this.service.addAsset(this.asset).subscribe(x=>{alert("Asset added")});
+    this.asset.ad_name = this.assetform.controls.ad_name.value;
+    this.asset.ad_type_id = this.assetform.controls.ad_type_id.value;
+    this.asset.ad_class = this.assetform.controls.ad_class.value;
+
+    this.service.addAsset(this.asset).subscribe(res=>{
+      if(res==0)
+      {
+        this.toastr.success('Added Successfully..!!', 'Success');
+        this.route.navigateByUrl('/assets');
+      }
+      else
+      {
+        this.toastr.error("Asset already exist!!!!!!");
+      }
+
+    });
+ 
     this.ngOnInit();
 
+    /*this.asset=this.assetform.value;
+    console.log(this.asset)
+    this.service.addAsset(this.asset).subscribe(x=>{alert("Asset added")});
+    this.ngOnInit();*/
+
   }
+
 
 
 }
